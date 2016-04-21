@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import ru.ya.litun.academyyandex.model.Artist;
 
 /**
+ * Encapsulates api work.
  * Created by Litun on 21.04.2016.
  */
 public class ApiManager {
@@ -57,6 +58,9 @@ public class ApiManager {
         this.failureListener = failureListener;
     }
 
+    /**
+     * Independent api listener.
+     */
     public interface ArtistsListener {
         void onArtistsLoaded(List<Artist> artists);
     }

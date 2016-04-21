@@ -1,7 +1,5 @@
 package ru.ya.litun.academyyandex;
 
-import android.util.SparseArray;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,12 +9,15 @@ import ru.ya.litun.academyyandex.api.ApiManager;
 import ru.ya.litun.academyyandex.model.Artist;
 
 /**
+ * Allow data access.
+ * Only one way to get data.
  * Created by Litun on 21.04.2016.
  */
 public class DataManager implements ApiManager.ArtistsListener, ApiManager.FailureListener {
     private ApiManager apiManager;
     private DataListener listener;
     private UpdateFailureListener failureListener;
+    //TODO: implement on disk cache
     private Map<Integer, Artist> cachedArtists = new HashMap<>();
 
     public DataManager() {
@@ -26,7 +27,7 @@ public class DataManager implements ApiManager.ArtistsListener, ApiManager.Failu
     }
 
     public List<Artist> getCachedArtists() {
-        //TODO: fix order
+        //TODO: order
         return new ArrayList<>(cachedArtists.values());
     }
 

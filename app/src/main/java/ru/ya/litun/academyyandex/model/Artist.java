@@ -16,12 +16,20 @@ public class Artist {
     String description;
     Cover cover;
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
 
     public String getSmallCover() {
         return cover.small;
+    }
+
+    public String getBigCover() {
+        return cover.big;
     }
 
     public List<String> getGenres() {
@@ -34,5 +42,9 @@ public class Artist {
 
     public int getTracks() {
         return tracks;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

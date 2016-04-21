@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Яндекс Мобилизация</string>
+    <string name="artists">Исполнители</string>
 
     <string name="album_one">альбом</string>
     <string name="album_few">альбома</string>
@@ -9,4 +10,5 @@
     <string name="song_few">песни</string>
     <string name="song_many">песен</string>
 
+    <string name="biography">Биография</string>
 </resources>

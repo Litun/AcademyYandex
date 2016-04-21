@@ -26,6 +26,7 @@ public class App extends Application {
     @Override
     public void onLowMemory() {
         super.onLowMemory();
+        dataManager.clearCache();
         dataManager = null;
     }
 }

@@ -22,6 +22,7 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVi
 
     private Context context;
     private List<Artist> artists;
+    private OnArtistClickListener clickListener;
 
     public ArtistsAdapter(Context context, List<Artist> artists) {
         this.context = context;
@@ -63,7 +64,11 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVi
         return artists.size();
     }
 
-    static class ArtistViewHolder extends RecyclerView.ViewHolder {
+    public void setClickListener(OnArtistClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    class ArtistViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
         private TextView name;
         private TextView genres;
@@ -76,6 +81,21 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVi
             name = (TextView) itemView.findViewById(R.id.name);
             genres = (TextView) itemView.findViewById(R.id.genres);
             info = (TextView) itemView.findViewById(R.id.info);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (clickListener != null) {
+                        int position = getAdapterPosition();
+                        Artist artist = artists.get(position);
+                        clickListener.onClick(artist.getId());
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnArtistClickListener {
+        void onClick(int id);
     }
 }

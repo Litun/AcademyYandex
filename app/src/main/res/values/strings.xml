@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Academy Yandex</string>
 
+    <string name="artists">Artists</string>
+
     <string name="album_one">album</string>
     <string name="album_few">albums</string>
     <string name="album_many">albums</string>
@@ -22,4 +24,6 @@
         <item quantity="many">@string/song_many</item>
         <item quantity="other">@string/song_many</item>
     </plurals>
+
+    <string name="biography">Biography</string>
 </resources>

@@ -19,4 +19,20 @@ public class Artist {
     public String getName() {
         return name;
     }
+
+    public String getSmallCover() {
+        return cover.small;
+    }
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public int getAlbums() {
+        return albums;
+    }
+
+    public int getTracks() {
+        return tracks;
+    }
 }

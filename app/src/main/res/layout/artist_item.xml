@@ -18,14 +18,15 @@
 
         <TextView
             android:id="@+id/name"
-            android:textColor="@color/textPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/image"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/image"
             android:layout_toRightOf="@+id/image"
-            android:text="Name" />
+            android:text="Name"
+            android:textAppearance="@style/TitleTextAppearance"
+            android:textColor="@color/textPrimary" />
 
         <TextView
             android:id="@+id/genres"
@@ -35,16 +36,18 @@
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/image"
             android:layout_toRightOf="@+id/image"
-            android:text="Dance" />
+            android:text="Dance"
+            android:textAppearance="@style/SubtextAppearance" />
 
         <TextView
             android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/image"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
             android:layout_toEndOf="@+id/image"
             android:layout_toRightOf="@+id/image"
-            android:text="Album" />
+            android:text="Album"
+            android:textAppearance="@style/SubtextAppearance" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

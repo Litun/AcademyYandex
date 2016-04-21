@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Academy Yandex</string>
+
+    <string name="album_one">album</string>
+    <string name="album_few">albums</string>
+    <string name="album_many">albums</string>
+
+    <plurals name="album_plurals">
+        <item quantity="one">@string/album_one</item>
+        <item quantity="few">@string/album_few</item>
+        <item quantity="many">@string/album_many</item>
+        <item quantity="other">@string/album_many</item>
+    </plurals>
+
+    <string name="song_one">song</string>
+    <string name="song_few">songs</string>
+    <string name="song_many">songs</string>
+
+    <plurals name="song_plurals">
+        <item quantity="one">@string/song_one</item>
+        <item quantity="few">@string/song_few</item>
+        <item quantity="many">@string/song_many</item>
+        <item quantity="other">@string/song_many</item>
+    </plurals>
 </resources>

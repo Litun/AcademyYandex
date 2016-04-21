@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Яндекс Мобилизация</string>
+
+    <string name="album_one">альбом</string>
+    <string name="album_few">альбома</string>
+    <string name="album_many">альбомов</string>
+
+    <string name="song_one">песня</string>
+    <string name="song_few">песни</string>
+    <string name="song_many">песен</string>
+
+</resources>

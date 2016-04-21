@@ -18,6 +18,12 @@ public class App extends Application {
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        StringFormatUtils.initResources(this);
+    }
+
+    @Override
     public void onLowMemory() {
         super.onLowMemory();
         dataManager = null;

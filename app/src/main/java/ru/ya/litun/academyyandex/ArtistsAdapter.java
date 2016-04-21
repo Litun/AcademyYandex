@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +49,13 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVi
     @Override
     public void onBindViewHolder(ArtistViewHolder holder, int position) {
         Artist artist = artists.get(position);
-        holder.bind(artist);
+        holder.name.setText(artist.getName());
+        holder.genres.setText(StringFormatUtils.concatWithCommas(artist.getGenres()));
+        holder.info.setText(StringFormatUtils.formatAlbumsAndSongs(artist.getAlbums(), artist.getTracks()));
+        Picasso.with(context)
+                .load(artist.getSmallCover())
+                .placeholder(R.drawable.placeholder)
+                .into(holder.image);
     }
 
     @Override
@@ -68,10 +76,6 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVi
             name = (TextView) itemView.findViewById(R.id.name);
             genres = (TextView) itemView.findViewById(R.id.genres);
             info = (TextView) itemView.findViewById(R.id.info);
-        }
-
-        public void bind(Artist artist) {
-            name.setText(artist.getName());
         }
     }
 }

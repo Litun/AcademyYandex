@@ -15,4 +15,8 @@ public class Artist {
     String link;
     String description;
     Cover cover;
+
+    public String getName() {
+        return name;
+    }
 }

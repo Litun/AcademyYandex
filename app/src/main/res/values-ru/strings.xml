@@ -11,4 +11,5 @@
     <string name="song_many">песен</string>
 
     <string name="biography">Биография</string>
+    <string name="error">Ошибка загрузки</string>
 </resources>

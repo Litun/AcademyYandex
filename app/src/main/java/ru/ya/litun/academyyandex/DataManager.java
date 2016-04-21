@@ -13,14 +13,16 @@ import ru.ya.litun.academyyandex.model.Artist;
 /**
  * Created by Litun on 21.04.2016.
  */
-public class DataManager implements ApiManager.ArtistsListener {
+public class DataManager implements ApiManager.ArtistsListener, ApiManager.FailureListener {
     private ApiManager apiManager;
     private DataListener listener;
+    private UpdateFailureListener failureListener;
     private Map<Integer, Artist> cachedArtists = new HashMap<>();
 
     public DataManager() {
         apiManager = new ApiManager();
         apiManager.setArtistsListener(this);
+        apiManager.setFailureListener(this);
     }
 
     public List<Artist> getCachedArtists() {
@@ -41,8 +43,9 @@ public class DataManager implements ApiManager.ArtistsListener {
         this.listener = listener;
     }
 
-    public void unregisterListener() {
+    public void unregisterListeners() {
         listener = null;
+        failureListener = null;
     }
 
     @Override
@@ -59,11 +62,25 @@ public class DataManager implements ApiManager.ArtistsListener {
         return cachedArtists.get(artistId);
     }
 
+    public void clearCache() {
+        cachedArtists = null;
+    }
+
+    public void setFailureListener(UpdateFailureListener failureListener) {
+        this.failureListener = failureListener;
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+        if (failureListener != null)
+            failureListener.onFailure();
+    }
+
     public interface DataListener {
         void onArtistsUpdated(List<Artist> artists);
     }
 
-    public void clearCache() {
-        cachedArtists = null;
+    public interface UpdateFailureListener {
+        void onFailure();
     }
 }

@@ -26,4 +26,5 @@
     </plurals>
 
     <string name="biography">Biography</string>
+    <string name="error">Loading failure</string>
 </resources>

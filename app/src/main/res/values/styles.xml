@@ -15,6 +15,7 @@
     <style name="CommonTextAppearance" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:lineSpacingMultiplier">100</item>
     </style>
 
     <style name="SubtextAppearance" parent="@android:style/TextAppearance.Medium">

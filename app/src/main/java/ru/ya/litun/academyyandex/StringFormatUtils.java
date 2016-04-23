@@ -15,7 +15,7 @@ public class StringFormatUtils {
         StringBuilder sb = new StringBuilder()
                 .append(strings.get(0));
 
-        for (int i = 0; i < strings.size(); i++) {
+        for (int i = 1; i < strings.size(); i++) {
             sb.append(", ")
                     .append(strings.get(i));
         }

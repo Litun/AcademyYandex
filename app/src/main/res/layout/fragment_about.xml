@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.AboutFragment">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -12,70 +13,12 @@
         android:background="@color/colorPrimary"
         app:titleTextColor="@android:color/primary_text_dark" />
 
-    <ScrollView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/placeholder" />
-
-            <TextView
-                android:id="@+id/genres"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="genres"
-                android:textAppearance="@style/SubtextAppearance" />
-
-            <TextView
-                android:id="@+id/albums"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="albums"
-                android:textAppearance="@style/SubtextAppearance" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/biography"
-                android:textAppearance="@style/TitleTextAppearance" />
-
-            <TextView
-                android:id="@+id/biography"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:lineSpacingMultiplier="1.5"
-                android:text="info"
-                android:textAppearance="@style/CommonTextAppearance" />
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:autoLink="web"
+        android:gravity="center"
+        android:text="@string/info_text" />
 
 </LinearLayout>
-

@@ -33,12 +33,14 @@
                 android:layout_weight="1" />
 
             <ImageView
+                android:id="@+id/email"
                 android:layout_width="@dimen/icon_height"
                 android:layout_height="@dimen/icon_height"
                 android:layout_margin="16dp"
                 android:src="@drawable/ic_email_white_36dp" />
 
             <ImageView
+                android:id="@+id/about"
                 android:layout_width="@dimen/icon_height"
                 android:layout_height="@dimen/icon_height"
                 android:layout_margin="16dp"

@@ -12,7 +12,8 @@ import ru.ya.litun.academyyandex.R;
 public class MainActivity extends AppCompatActivity implements MainListFragment.OnFragmentListener {
 
     public static final int MAIN_FRAGMENT_KEY = 1;
-    public static final int ABOUT_FRAGMENT_KEY = 2;
+    public static final int ARTIST_FRAGMENT_KEY = 2;
+    public static final int ABOUT_FRAGMENT_KEY = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +37,23 @@ public class MainActivity extends AppCompatActivity implements MainListFragment.
         switch (fragmentKey) {
             case MAIN_FRAGMENT_KEY:
                 break;
+            case ARTIST_FRAGMENT_KEY:
+                ArtistFragment artistFragment = new ArtistFragment();
+                artistFragment.setArguments(bundle);
+                placeFragment(artistFragment);
+                break;
             case ABOUT_FRAGMENT_KEY:
                 AboutFragment aboutFragment = new AboutFragment();
-                aboutFragment.setArguments(bundle);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, aboutFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                placeFragment(aboutFragment);
                 break;
         }
+    }
+
+    private void placeFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override

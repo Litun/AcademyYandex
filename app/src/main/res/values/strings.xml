@@ -27,4 +27,7 @@
 
     <string name="biography">Biography</string>
     <string name="error">Loading failure</string>
+
+    <string name="info_text">Mobilization info.\nSee the repo:\nhttps://github.com/Litun/AcademyYandex</string>
+    <string name="about">About</string>
 </resources>

@@ -1,7 +1,9 @@
 package ru.ya.litun.academyyandex.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -75,8 +77,8 @@ public class MainListFragment extends ToolbarFragment
 
     private void showAboutFragment(int id) {
         Bundle bundle = new Bundle();
-        bundle.putInt(AboutFragment.ID_KEY, id);
-        mListener.onOpenNewFragment(MainActivity.ABOUT_FRAGMENT_KEY, bundle);
+        bundle.putInt(ArtistFragment.ID_KEY, id);
+        mListener.onOpenNewFragment(MainActivity.ARTIST_FRAGMENT_KEY, bundle);
     }
 
     void showList() {
@@ -90,6 +92,26 @@ public class MainListFragment extends ToolbarFragment
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler);
         progressBar = (ProgressBar) v.findViewById(R.id.progress);
         refresh = (SwipeRefreshLayout) v.findViewById(R.id.refresh);
+        v.findViewById(R.id.about).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onOpenNewFragment(MainActivity.ABOUT_FRAGMENT_KEY, null);
+            }
+        });
+        v.findViewById(R.id.email).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
+    }
+
+    private void sendEmail() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, "litunone@gmail.com");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Mobilization feedback");
+        startActivity(Intent.createChooser(intent, "Send Email"));
     }
 
     @Override
@@ -131,6 +153,6 @@ public class MainListFragment extends ToolbarFragment
     }
 
     public interface OnFragmentListener {
-        void onOpenNewFragment(int fragmentKey, Bundle bundle);
+        void onOpenNewFragment(int fragmentKey, @Nullable Bundle bundle);
     }
 }

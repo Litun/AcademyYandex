@@ -15,10 +15,8 @@ import android.widget.ProgressBar;
 import java.util.List;
 
 import ru.ya.litun.academyyandex.App;
-import ru.ya.litun.academyyandex.ArtistsAdapter;
 import ru.ya.litun.academyyandex.DataManager;
 import ru.ya.litun.academyyandex.R;
-import ru.ya.litun.academyyandex.VerticalSpaceItemDecoration;
 import ru.ya.litun.academyyandex.model.Artist;
 
 public class MainListFragment extends ToolbarFragment
@@ -69,6 +67,7 @@ public class MainListFragment extends ToolbarFragment
         });
 
         setToolbar((Toolbar) view.findViewById(R.id.toolbar));
+        setTitle(R.string.artists);
 
         return view;
     }

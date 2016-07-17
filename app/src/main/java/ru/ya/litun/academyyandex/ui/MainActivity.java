@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import ru.ya.litun.academyyandex.App;
 import ru.ya.litun.academyyandex.R;
 
 public class MainActivity extends AppCompatActivity implements MainListFragment.OnFragmentListener {

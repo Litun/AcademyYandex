@@ -1,4 +1,4 @@
-package ru.ya.litun.academyyandex;
+package ru.ya.litun.academyyandex.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.ya.litun.academyyandex.R;
+import ru.ya.litun.academyyandex.StringFormatUtils;
 import ru.ya.litun.academyyandex.model.Artist;
 
 /**

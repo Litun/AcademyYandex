@@ -1,4 +1,4 @@
-package ru.ya.litun.academyyandex;
+package ru.ya.litun.academyyandex.ui;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

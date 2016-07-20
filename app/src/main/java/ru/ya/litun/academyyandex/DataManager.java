@@ -1,12 +1,13 @@
 package ru.ya.litun.academyyandex;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.AsyncTask;
+
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import ru.ya.litun.academyyandex.api.ApiManager;
 import ru.ya.litun.academyyandex.model.Artist;
+import ru.ya.litun.academyyandex.model.DatabaseHelper;
 
 /**
  * Allow data access.
@@ -17,8 +18,6 @@ public class DataManager implements ApiManager.ArtistsListener, ApiManager.Failu
     private ApiManager apiManager;
     private DataListener listener;
     private UpdateFailureListener failureListener;
-    //TODO: implement on disk cache
-    private Map<Integer, Artist> cachedArtists = new HashMap<>();
 
     public DataManager() {
         apiManager = new ApiManager();
@@ -27,8 +26,7 @@ public class DataManager implements ApiManager.ArtistsListener, ApiManager.Failu
     }
 
     public List<Artist> getCachedArtists() {
-        //TODO: order
-        return new ArrayList<>(cachedArtists.values());
+        return App.getHelper().getArtists();
     }
 
     public void requestArtistsUpdate() {
@@ -51,20 +49,30 @@ public class DataManager implements ApiManager.ArtistsListener, ApiManager.Failu
 
     @Override
     public void onArtistsLoaded(List<Artist> artists) {
-        cachedArtists.clear();
-        for (Artist artist : artists) {
-            cachedArtists.put(artist.getId(), artist);
-        }
-        if (listener != null)
-            listener.onArtistsUpdated(getCachedArtists());
+        final DatabaseHelper helper = App.getHelper();
+        new AsyncTask<List<Artist>, Void, Boolean>() {
+
+            @Override
+            protected Boolean doInBackground(List<Artist>... params) {
+                return helper.updateArtists(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Boolean success) {
+                if (success && listener != null)
+                    listener.onArtistsUpdated(getCachedArtists());
+            }
+        }.execute(artists);
     }
 
     public Artist getArtist(int artistId) {
-        return cachedArtists.get(artistId);
-    }
-
-    public void clearCache() {
-        cachedArtists = null;
+        try {
+            Artist artist = App.getHelper().getArtistDAO().getArtist(artistId);
+            return artist;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void setFailureListener(UpdateFailureListener failureListener) {

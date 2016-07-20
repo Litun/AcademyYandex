@@ -1,5 +1,8 @@
 package ru.ya.litun.academyyandex.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -8,6 +11,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.ya.litun.academyyandex.model.Artist;
+import ru.ya.litun.academyyandex.model.Genre;
 
 /**
  * Encapsulates api work.
@@ -20,13 +24,16 @@ public class ApiManager {
     private FailureListener failureListener;
 
     public ApiManager() {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Genre.class, new GenreDeserializer())
+                .create();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         service = retrofit.create(ArtistsService.class);
-
     }
 
     public void requestArtists(ArtistsListener listener) {
